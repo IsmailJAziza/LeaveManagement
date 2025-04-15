@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 using System;
-using LeaveManagement.Models;
 
 namespace LeaveManagement.Data;
 

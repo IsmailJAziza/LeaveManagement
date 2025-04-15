@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LeaveManagement.Data;
 using LeaveManagement.Services;
+using System.Reflection;
 
 namespace LeaveManagement;
 
@@ -20,6 +21,8 @@ public class Program
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddControllersWithViews();
+
+        builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
 

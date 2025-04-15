@@ -1,5 +1,4 @@
 ﻿using LeaveManagement.Data;
-using LeaveManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -47,11 +46,22 @@ namespace LeaveManagement.Services
             await _context.SaveChangesAsync();
         }
 
-        public bool LeaveTypeExists(int id)
+        public async Task<bool> LeaveTypeExists(int id)
         {
-            return _context.LeaveTypes.Any(e => e.Id == id);
+            return await _context.LeaveTypes.AnyAsync(e => e.Id == id);
 
         }
 
+        public async Task<bool> LeaveTypeNameExists(string name)
+        {
+            return await _context.LeaveTypes.AnyAsync(x => x.Name.ToLower().Equals(name.ToLower()));
+        }
+
+        public async Task<bool> LeaveTypeNameExistsForEdit(string name, int Id)
+        {
+            return await _context.LeaveTypes.AnyAsync(x => x.Name.ToLower().Equals(name.ToLower()) &&
+            x.Id != Id 
+            );
+        }
     }
 }

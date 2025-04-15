@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LeaveManagement.Models.LeaveType>
+﻿@model IEnumerable<LeaveTypeReadOnlyVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -28,7 +28,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumbersOfDays)
+                    @Html.DisplayFor(modelItem => item.NumbersOfDays)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id"    class="btn btn-warning">Edit</a> 
