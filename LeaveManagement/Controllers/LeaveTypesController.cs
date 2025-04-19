@@ -10,19 +10,21 @@ using LeaveManagement.Services;
 using LeaveManagement.Models.LeaveTypes;
 using AutoMapper;
 using LeaveManagement.MappingProfiles;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace LeaveManagement.Controllers
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
-        private readonly IMapper _mapper;
         private const string NameExisitValidationMessage= "This leave is alreaed Exist";
 
-        public LeaveTypesController(ILeaveTypeRepository repository, IMapper mapper)
+        public LeaveTypesController(ILeaveTypeRepository repository)
         {
            _leaveTypeRepository = repository;
-            _mapper = mapper;
+           
         }
 
         // GET: LeaveTypes
