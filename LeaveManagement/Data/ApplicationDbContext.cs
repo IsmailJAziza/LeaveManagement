@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 using System;
 using Microsoft.AspNetCore.Identity;
+using LeaveManagement.Data.DataModel;
 
 namespace LeaveManagement.Data;
 
@@ -66,4 +67,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
    
     public DbSet<LeaveType> LeaveTypes { get; set; }
+    public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
+    public DbSet<Period> Periods { get; set; }
 }

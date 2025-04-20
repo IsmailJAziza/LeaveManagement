@@ -1,7 +1,9 @@
+using LeaveManagement.Data.DataModel;
+using LeaveManagement.Services;
+using LeaveManagement.Services.Interface;
+using LeaveManagement.Services.InterFace;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using LeaveManagement.Data;
-using LeaveManagement.Services;
 using System.Reflection;
 
 namespace LeaveManagement;
@@ -18,16 +20,15 @@ public class Program
             options.UseSqlServer(connectionString));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+        builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
+        builder.Services.AddScoped<IPeriodRepository, PeriodRepository>();
+
         builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+           .AddRoles<IdentityRole>()
+           .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddControllersWithViews();
 
         builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
-        builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
-
-
 
         var app = builder.Build();
 

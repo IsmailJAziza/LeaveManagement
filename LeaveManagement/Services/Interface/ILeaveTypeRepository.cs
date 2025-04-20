@@ -1,6 +1,6 @@
 ﻿using LeaveManagement.Models.LeaveTypes;
 
-namespace LeaveManagement.Services
+namespace LeaveManagement.Services.InterFace
 {
     public interface ILeaveTypeRepository
     {

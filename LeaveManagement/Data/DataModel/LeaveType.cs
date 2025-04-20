@@ -1,4 +1,4 @@
-﻿namespace LeaveManagement.Data
+﻿namespace LeaveManagement.Data.DataModel
 {
     public class LeaveType
     {

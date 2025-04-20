@@ -46,8 +46,8 @@
             @foreach (var role in Model.RoleNames)
             {
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" asp-for="Input.RoleName" value="@role">
-                    <label class="form-check-label" asp-for="Input.RoleName">
+                    <input class="form-check-input mb-1" type="radio" asp-for="Input.RoleName" value="@role">
+                    <label class="form-check-label mb-1" asp-for="Input.RoleName">
                         @role
                     </label>
                 </div>
