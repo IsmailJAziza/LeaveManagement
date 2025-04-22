@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using LeaveManagement.Data;
+using LeaveManagement.Data.DataModel;
 using LeaveManagement.Models.LeaveTypes;
+using LeaveManagement.Services.InterFace;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -79,7 +80,14 @@ namespace LeaveManagement.Services
                 && q.Id != model.Id);
 
         }
+        public async Task<bool> DaysExcceedMaximum(int leavetTypeId, int days)
+        {
+            var leaveType = await _context.LeaveTypes.FindAsync(leavetTypeId);
 
-        
+            return leaveType.NumbersOfDays < days;
+        }
+
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using LeaveManagement.Models.LeaveTypes;
 
-namespace LeaveManagement.Services
+namespace LeaveManagement.Services.InterFace
 {
     public interface ILeaveTypeRepository
     {
@@ -12,5 +12,6 @@ namespace LeaveManagement.Services
         Task<T> Get<T>(int id) where T : class;
         Task<List<LeaveTypeReadOnlyVM>> GettAll();
         bool LeaveTypeExists(int id);
+        public Task<bool> DaysExcceedMaximum(int leavetTypeId, int days);
     }
 }
