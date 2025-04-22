@@ -10,9 +10,11 @@ using LeaveManagement.Data.DataModel;
 using LeaveManagement.Services.Interface;
 using LeaveManagement.Models.Period;
 using LeaveManagement.Models.LeaveTypes;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LeaveManagement.Controllers
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class PeriodsController : Controller
     {
         private readonly IPeriodRepository _periodRepository;

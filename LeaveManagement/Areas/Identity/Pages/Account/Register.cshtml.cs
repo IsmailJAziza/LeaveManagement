@@ -12,6 +12,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using LeaveManagement.Data.DataModel;
+using LeaveManagement.Services.Interface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -33,6 +34,7 @@ namespace LeaveManagement.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -40,7 +42,9 @@ namespace LeaveManagement.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ILeaveAllocationRepository leaveAllocationRepository
+            )
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -49,6 +53,7 @@ namespace LeaveManagement.Areas.Identity.Pages.Account
             _roleManager = roleManager;
             _logger = logger;
             _emailSender = emailSender;
+            _leaveAllocationRepository = leaveAllocationRepository;
         }
 
         /// <summary>
@@ -170,6 +175,8 @@ namespace LeaveManagement.Areas.Identity.Pages.Account
                         await _userManager.AddToRoleAsync(user, Roles.Employee);
                     }
                     var userId = await _userManager.GetUserIdAsync(user);
+                    await _leaveAllocationRepository.AllocateLeaveAsync(userId);
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(

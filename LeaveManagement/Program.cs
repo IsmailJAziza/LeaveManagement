@@ -22,6 +22,8 @@ public class Program
 
         builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
         builder.Services.AddScoped<IPeriodRepository, PeriodRepository>();
+        builder.Services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
+        builder.Services.AddHttpContextAccessor();
 
         builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
            .AddRoles<IdentityRole>()

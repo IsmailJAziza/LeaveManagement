@@ -33,15 +33,17 @@
                                     Mannage
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="LeaveTypes" asp-action="Index">Leave Type</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Periods" asp-action="Index">Period</a>
-                                    </li>
-                                   
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="LeaveTypes" asp-action="Index">Leave Type</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Periods" asp-action="Index">Period</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="LeaveAllocation" asp-action="Index">View Employee</a></li>
                                 </ul>
                             </div>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="LeaveAllocation" asp-action="Details">View Allocations</a>
+                            </li>
                         }
 
                     </ul>

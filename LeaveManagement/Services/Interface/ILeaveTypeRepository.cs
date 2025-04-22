@@ -12,5 +12,6 @@ namespace LeaveManagement.Services.InterFace
         Task<T> Get<T>(int id) where T : class;
         Task<List<LeaveTypeReadOnlyVM>> GettAll();
         bool LeaveTypeExists(int id);
+        public Task<bool> DaysExcceedMaximum(int leavetTypeId, int days);
     }
 }

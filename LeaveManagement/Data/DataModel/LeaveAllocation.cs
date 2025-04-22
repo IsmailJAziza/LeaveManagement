@@ -11,4 +11,4 @@
         public Period Period { get; set; }
         public int Days { get; set; }
     }
-}
+} 
