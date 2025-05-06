@@ -8,7 +8,7 @@ namespace LeaveManagement.MappingProfiles
     {
         public LeaveAllocationAM()
         {
-            CreateMap<LeaveAllocation, LeaveAllocationVM>();
+            CreateMap<LeaveAllocation, LeaveAllocationVM>().ReverseMap();
             CreateMap<LeaveAllocation, LeaveAllocationEditVM>();
             CreateMap<ApplicationUser, EmployeeListVM>();
         }

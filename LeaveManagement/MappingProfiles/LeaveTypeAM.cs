@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using LeaveManagement.Data.DataModel;
 using LeaveManagement.Models.LeaveTypes;
-using LeaveManagement.Models.Period;
 
 namespace LeaveManagement.MappingProfiles
 {
@@ -13,9 +12,9 @@ namespace LeaveManagement.MappingProfiles
             CreateMap<LeaveTypeCreateVM, LeaveType>();
             CreateMap<LeaveTypeEditVM, LeaveType>().ReverseMap();
 
-            
+
         }
 
-       
+
     }
 }

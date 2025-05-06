@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using LeaveManagement.Data.DataModel;
-using LeaveManagement.Models.LeaveTypes;
 using LeaveManagement.Models.Period;
 using LeaveManagement.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -78,6 +77,13 @@ namespace LeaveManagement.Services
             var lowercaseName = model.Name.ToLower();
             return await _context.Periods.AnyAsync(q => q.Name.ToLower().Equals(lowercaseName)
                 && q.Id != model.Id);
+        }
+
+        public async Task<Period> GetCurrentPeriod()
+        {
+            var currentDate = DateTime.Now;
+            var period = await _context.Periods.FirstOrDefaultAsync(q => q.EndDate.Year == currentDate.Year);
+            return period;
         }
     }
 }
