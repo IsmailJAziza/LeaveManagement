@@ -4,7 +4,7 @@ namespace LeaveManagement.Models.LeaveRequest
 {
     public class EmployeeLeaveRequestListVM
     {
-        [Display(Name = "Total Number Of Request")]
+        [Display(Name = "Number Of Request")]
         public int TotalRequests { get; set; }
         [Display(Name = "Approved Request")]
         public int ApprovedRequests { get; set; }
