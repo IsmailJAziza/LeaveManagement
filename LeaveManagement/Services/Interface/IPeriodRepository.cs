@@ -1,4 +1,5 @@
-﻿using LeaveManagement.Models.LeaveTypes;
+﻿using LeaveManagement.Data.DataModel;
+using LeaveManagement.Models.LeaveTypes;
 using LeaveManagement.Models.Period;
 
 namespace LeaveManagement.Services.Interface
@@ -12,6 +13,7 @@ namespace LeaveManagement.Services.Interface
         Task Edit(PeriodEditVM model);
         Task<T> Get<T>(int id) where T : class;
         Task<List<PeriodReadOnlyVM>> GettAll();
+        Task<Period> GetCurrentPeriod();
         bool PeriodExists(int id);
     }
 }

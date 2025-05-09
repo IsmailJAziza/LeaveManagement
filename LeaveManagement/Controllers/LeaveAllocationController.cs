@@ -40,7 +40,7 @@ namespace LeaveManagement.Controllers
             {
                 return NotFound();
             }
-            var allocation = await _leaveAllocationRepository.GetEmployeeAllocationAsync(Id.Value);
+            var allocation = await _leaveAllocationRepository.GetEmployeeAllocationsAsync(Id.Value);
             if (allocation is null)
             {
                 return NotFound();
@@ -63,7 +63,7 @@ namespace LeaveManagement.Controllers
             }
             
              var days = allocation.Days;
-            allocation = await _leaveAllocationRepository.GetEmployeeAllocationAsync(allocation.Id);
+            allocation = await _leaveAllocationRepository.GetEmployeeAllocationsAsync(allocation.Id);
             allocation.Days = days;
             
             return View(allocation);

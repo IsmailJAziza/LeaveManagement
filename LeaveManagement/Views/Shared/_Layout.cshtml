@@ -29,13 +29,14 @@
                         @if (User.IsInRole(Roles.Administrator))
                         {
                             <div class="nav-item dropdown">
-                                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Mannage
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="nav-link text-dark" asp-area="" asp-controller="LeaveTypes" asp-action="Index">Leave Type</a></li>
                                     <li><a class="nav-link text-dark" asp-area="" asp-controller="Periods" asp-action="Index">Period</a></li>
                                     <li><a class="nav-link text-dark" asp-area="" asp-controller="LeaveAllocation" asp-action="Index">View Employee</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="LeaveRequests" asp-action="ListRequests">Manage Leave Requests</a></li>
                                 </ul>
                             </div>
                         }
@@ -64,6 +65,7 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.all.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

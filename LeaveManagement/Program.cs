@@ -23,7 +23,16 @@ public class Program
         builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
         builder.Services.AddScoped<IPeriodRepository, PeriodRepository>();
         builder.Services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
+        builder.Services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddHttpContextAccessor();
+
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("AdminSupervisor", policy => {
+                policy.RequireRole(Roles.Administrator, Roles.Supervisor);
+            });
+        });
 
         builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
            .AddRoles<IdentityRole>()
