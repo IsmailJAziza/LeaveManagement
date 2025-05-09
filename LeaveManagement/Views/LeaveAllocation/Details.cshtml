@@ -86,9 +86,9 @@
                         <div class="col">
                             @if (isAdmin)
                             {
-                                <a class="btn btn-warning" asp-action="EditAllocation" asp-route-id="@allocation.Id">Edit Allocation</a>
+                                <a class="m-1 btn btn-warning" asp-action="EditAllocation" asp-route-id="@allocation.Id">Edit Allocation</a>
                             }
-                            <a asp-controller="LeaveRequests" asp-action="Create" asp-route-leaveTypeId="@allocation.LeaveType.Id" class="btn btn-success">Request a Leave</a>
+                            <a asp-controller="LeaveRequests" asp-action="Create" asp-route-leaveTypeId="@allocation.LeaveType.Id" class="m-1 btn btn-success">Request a Leave</a>
                         </div>
                     </div>
                 </li>
