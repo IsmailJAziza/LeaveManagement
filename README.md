@@ -50,3 +50,33 @@ _A practical Employee Leave Management System built with ASP.NET Core and Entity
 # License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+## Installation Instructions
+###  1. Clone the Repository
+
+    git clone https://github.com/IsmailJAziza/LeaveManagement.git
+    cd LeaveManagementSystem
+### 2. Open in Visual Studio
+-   Go to  `appsettings.json`  in the  `LeaveManagementSystem.Web`  project.
+-   Update the  `DefaultConnection`  string with your SQL Server instance.
+
+Example:
+
+    "ConnectionStrings": {
+	    "DefaultConnection": "Server=HP-OMEN15\\SQLEXPRESS  ;Database= LeaveManagement;User Id=;Password=;Integrated Security=True;Encrypt=False ;Trusted_Connection=True;MultipleActiveResultSets=true;"
+     },
+
+### 3. Apply Migrations
+Using the Package Manager Console:
+
+    Update-Database
+### 4. Run the Application
+-   Set  `LeaveManagementSystem.`  as the startup project.
+-   Press  `F5`  or click the  **Run**  button in Visual Studio.
+### 5. Log In
+
+**Default Admin Credentials:**
+-   **Username:**  [admin@localhost.com](mailto:admin@localhost.com)
+-   **Password:**  P@ssword1
+
